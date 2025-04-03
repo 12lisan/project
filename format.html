@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Layout & Styling Techniques</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        h1, h2 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        /* Float and Clear Layout */
+        .float-section {
+            overflow: auto; /* Clearfix */
+        }
+        
+        .float-box {
+            float: left;
+            width: 30%;
+            margin: 1.5%;
+            padding: 20px;
+            background-color: #e9f7fe;
+            border: 1px solid #b3e0ff;
+        }
+        
+        .clear-box {
+            clear: both;
+            padding: 20px;
+            background-color: #ffe6e6;
+            border: 1px solid #ffb3b3;
+        }
+        
+        /* Center Align using Margin */
+        .center-section {
+            text-align: center;
+        }
+        
+        .center-box {
+            width: 60%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e6ffe6;
+            border: 1px solid #b3ffb3;
+        }
+        
+        /* Width and Max-width */
+        .width-section {
+            background-color: #f9f9f9;
+        }
+        
+        .width-box {
+            width: 80%;
+            max-width: 600px;
+            padding: 20px;
+            margin-bottom: 15px;
+            background-color: #fff0e6;
+            border: 1px solid #ffcc99;
+        }
+        
+        .full-width-box {
+            width: 100%;
+            padding: 20px;
+            background-color: #e6e6ff;
+            border: 1px solid #b3b3ff;
+        }
+        
+        /* Rounded Corners */
+        .rounded-section {
+            background-color: #fff9e6;
+        }
+        
+        .rounded-box {
+            padding: 20px;
+            margin: 10px 0;
+            background-color: #fff;
+            border: 1px solid #ffdb99;
+        }
+        
+        .rounded-1 {
+            border-radius: 10px;
+        }
+        
+        .rounded-2 {
+            border-radius: 20px 0;
+        }
+        
+        .rounded-3 {
+            border-radius: 50% 10px;
+        }
+        
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ffccff;
+            display: inline-block;
+            margin: 10px;
+        }
+        
+        /* Opacity */
+        .opacity-section {
+            background-color: #f0f0f0;
+        }
+        
+        .opacity-box {
+            padding: 20px;
+            margin: 10px 0;
+            background-color: #3366ff;
+            color: white;
+        }
+        
+        .opacity-1 {
+            opacity: 1;
+        }
+        
+        .opacity-2 {
+            opacity: 0.7;
+        }
+        
+        .opacity-3 {
+            opacity: 0.4;
+        }
+        
+        /* Transform Properties */
+        .transform-section {
+            background-color: #e6f3ff;
+        }
+        
+        .transform-box {
+            width: 100px;
+            height: 100px;
+            margin: 20px;
+            display: inline-block;
+            background-color: #ff6666;
+            transition: all 0.3s ease;
+            text-align: center;
+            line-height: 100px;
+            color: white;
+        }
+        
+        .translate:hover {
+            transform: translate(20px, 10px);
+        }
+        
+        .rotate:hover {
+            transform: rotate(30deg);
+        }
+        
+        .scale:hover {
+            transform: scale(1.2);
+        }
+        
+        .skew:hover {
+            transform: skew(20deg, 10deg);
+        }
+        
+        .matrix:hover {
+            transform: matrix(1, -0.3, 0, 1, 0, 0);
+        }
+        
+        .rotate3d:hover {
+            transform: rotate3d(1, 1, 1, 45deg);
+        }
+        
+        .perspective:hover {
+            transform: perspective(500px) rotateY(45deg);
+        }
+        
+        /* Transition Properties */
+        .transition-section {
+            background-color: #ffe6f2;
+        }
+        
+        .transition-box {
+            width: 100px;
+            height: 100px;
+            background-color: #66cc99;
+            margin: 20px;
+            transition: all 0.5s ease-in-out;
+        }
+        
+        .transition-box:hover {
+            width: 150px;
+            height: 150px;
+            background-color: #ff9966;
+            transform: rotate(180deg);
+            border-radius: 50%;
+        }
+        
+        .multi-transition {
+            transition: width 0.5s ease, height 0.5s ease 0.2s, background-color 0.3s linear, transform 0.7s ease-in;
+        }
+        
+        /* Animation */
+        .animation-section {
+            background-color: #f0fff0;
+        }
+        
+        .animation-box {
+            width: 100px;
+            height: 100px;
+            background-color: #9966ff;
+            margin: 20px;
+            position: relative;
+            animation-name: example;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+        }
+        
+        @keyframes example {
+            0%   {background-color:#9966ff; left:0px; top:0px;}
+            25%  {background-color:#66ccff; left:200px; top:0px;}
+            50%  {background-color:#66ff99; left:200px; top:100px;}
+            75%  {background-color:#ffcc66; left:0px; top:100px;}
+            100% {background-color:#9966ff; left:0px; top:0px;}
+        }
+        
+        .paused:hover {
+            animation-play-state: paused;
+        }
+        
+        /* Box-sizing */
+        .box-sizing-section {
+            background-color: #fff0f5;
+        }
+        
+        .box-model {
+            width: 300px;
+            padding: 20px;
+            border: 10px solid #ff9999;
+            margin: 20px;
+            background-color: #ffccff;
+        }
+        
+        .content-box {
+            box-sizing: content-box;
+        }
+        
+        .border-box {
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CSS Layout & Styling Techniques</h1>
+        
+        <!-- Float and Clear Layout -->
+        <section class="float-section">
+            <h2>Float and Clear Layout</h2>
+            <div class="float-box">Float Box 1 (float: left)</div>
+            <div class="float-box">Float Box 2 (float: left)</div>
+            <div class="float-box">Float Box 3 (float: left)</div>
+            <div class="clear-box">Cleared Box (clear: both)</div>
+        </section>
+        
+        <!-- Center Align using Margin -->
+        <section class="center-section">
+            <h2>Center Align using Margin</h2>
+            <div class="center-box">
+                This box is centered using margin: 0 auto;
+                <br>Width is set to 60% of parent
+            </div>
+        </section>
+        
+        <!-- Width and Max-width -->
+        <section class="width-section">
+            <h2>Width and Max-width</h2>
+            <div class="width-box">
+                This box has width: 80% and max-width: 600px
+                <br>It will grow up to 600px then stop
+            </div>
+            <div class="full-width-box">
+                This box has width: 100%
+            </div>
+        </section>
+        
+        <!-- Rounded Corners -->
+        <section class="rounded-section">
+            <h2>Rounded Corner Properties</h2>
+            <div class="rounded-box rounded-1">border-radius: 10px;</div>
+            <div class="rounded-box rounded-2">border-radius: 20px 0;</div>
+            <div class="rounded-box rounded-3">border-radius: 50% 10px;</div>
+            <div class="circle">Circle</div>
+        </section>
+        
+        <!-- Opacity -->
+        <section class="opacity-section">
+            <h2>Opacity Properties</h2>
+            <div class="opacity-box opacity-1">Opacity: 1 (fully opaque)</div>
+            <div class="opacity-box opacity-2">Opacity: 0.7 (semi-transparent)</div>
+            <div class="opacity-box opacity-3">Opacity: 0.4 (more transparent)</div>
+        </section>
+        
+        <!-- Transform Properties -->
+        <section class="transform-section">
+            <h2>Transform Properties (2D and 3D)</h2>
+            <p>Hover over the boxes to see transforms:</p>
+            <div class="transform-box translate">Translate</div>
+            <div class="transform-box rotate">Rotate</div>
+            <div class="transform-box scale">Scale</div>
+            <div class="transform-box skew">Skew</div>
+            <div class="transform-box matrix">Matrix</div>
+            <div class="transform-box rotate3d">3D Rotate</div>
+            <div class="transform-box perspective">Perspective</div>
+        </section>
+        
+        <!-- Transition Properties -->
+        <section class="transition-section">
+            <h2>Transition Properties</h2>
+            <p>Hover over the boxes to see transitions:</p>
+            <div class="transition-box">Basic</div>
+            <div class="transition-box multi-transition">Multi-property</div>
+        </section>
+        
+        <!-- Animation -->
+        <section class="animation-section">
+            <h2>Animation</h2>
+            <p>Box with keyframe animation (hover to pause):</p>
+            <div class="animation-box paused"></div>
+        </section>
+        
+        <!-- Box-sizing -->
+        <section class="box-sizing-section">
+            <h2>Box-sizing Property</h2>
+            <div class="box-model content-box">
+                content-box (default)
+                <br>Total width = width + padding + border = 300 + 40 + 20 = 360px
+            </div>
+            <div class="box-model border-box">
+                border-box
+                <br>Total width = width (includes padding and border) = 300px
+                <br>Content width = 300 - 40 - 20 = 240px
+            </div>
+        </section>
+    </div>
+</body>
+</html>
